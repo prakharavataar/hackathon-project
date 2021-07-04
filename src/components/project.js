@@ -89,48 +89,48 @@ function Project() {
     return tl;
   }
 
-  function third() {
-    const scene = new THREE.Scene();
-    const mainRefHeight = rightLayoutChild.current.children[1].offsetHeight;
-    const mainRefWidth = rightLayoutChild.current.children[1].offsetWidth;
-    scene.background = new THREE.Color("white");
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      mainRefWidth / mainRefHeight,
-      0.1,
-      1000
-    );
-    const canvas = document.querySelector("canvas.webgl");
-    const renderer = new THREE.WebGLRenderer({ canvas });
-    renderer.setSize(mainRefWidth, mainRefHeight);
+  // function third() {
+  //   const scene = new THREE.Scene();
+  //   const mainRefHeight = rightLayoutChild.current.children[1].offsetHeight;
+  //   const mainRefWidth = rightLayoutChild.current.children[1].offsetWidth;
+  //   scene.background = new THREE.Color("white");
+  //   const camera = new THREE.PerspectiveCamera(
+  //     75,
+  //     mainRefWidth / mainRefHeight,
+  //     0.1,
+  //     1000
+  //   );
+  //   const canvas = document.querySelector("canvas.webgl");
+  //   const renderer = new THREE.WebGLRenderer({ canvas });
+  //   renderer.setSize(mainRefWidth, mainRefHeight);
 
-    const spotLight = new THREE.SpotLight({ color: 0xffffff });
-    spotLight.position.set(100, 1000, 100);
-    spotLight.castShadow = true;
-    spotLight.shadow.mapSize.width = 1024;
-    spotLight.shadow.mapSize.height = 1024;
+  //   const spotLight = new THREE.SpotLight({ color: 0xffffff });
+  //   spotLight.position.set(100, 1000, 100);
+  //   spotLight.castShadow = true;
+  //   spotLight.shadow.mapSize.width = 1024;
+  //   spotLight.shadow.mapSize.height = 1024;
 
-    spotLight.shadow.camera.near = 500;
-    spotLight.shadow.camera.far = 4000;
-    spotLight.shadow.camera.fov = 30;
+  //   spotLight.shadow.camera.near = 500;
+  //   spotLight.shadow.camera.far = 4000;
+  //   spotLight.shadow.camera.fov = 30;
 
-    scene.add(spotLight);
+  //   scene.add(spotLight);
 
-    renderer.render(scene, camera);
-    camera.position.z = 5;
-    const animate = function () {
-      requestAnimationFrame(animate);
-      renderer.render(scene, camera);
-    };
-    animate();
-  }
+  //   renderer.render(scene, camera);
+  //   camera.position.z = 5;
+  //   const animate = function () {
+  //     requestAnimationFrame(animate);
+  //     renderer.render(scene, camera);
+  //   };
+  //   animate();
+  // }
 
   useEffect(() => {
     // Master timeline...
     console.log(THREE);
     var master = gsap.timeline();
     master.add(first()).add(second(), "+=.2");
-  }, []);
+  },[]);
 
   return (
     <>
