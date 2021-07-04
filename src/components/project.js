@@ -3,6 +3,7 @@ import ProgressBar from "./ProgressBar";
 import "./project.css";
 import gsap from "gsap";
 import THREE from "./three";
+import logo from "../assests/samsung.gif";
 
 function Project() {
   const [percentage, setState] = useState(0);
@@ -55,6 +56,7 @@ function Project() {
     const rightChild = rightLayoutChild.current;
     const leftLayoutChild2 =
       document.getElementsByClassName("leftLayoutChild2")[0];
+    const innerText = document.getElementsByClassName("innerText")[0];
     console.log(leftLayoutChild2);
     var tl = gsap.timeline();
     tl.fromTo(
@@ -70,7 +72,7 @@ function Project() {
         ease: "power1.out",
       })
       .fromTo(
-        leftLayoutChild2,
+        [leftLayoutChild2, innerText],
         { visibility: "hidden" },
         { duration: 0.5, ease: "power1.in", visibility: "visible", delay: 0.5 }
       )
@@ -85,7 +87,11 @@ function Project() {
         { scale: 0 },
         { scale: 1, duration: 0.5, delay: 0.5 }
       )
-      .fromTo(rightChild.children[1], { scale: 0 }, { scale: 1, duration: 0.5 })
+      .fromTo(
+        rightChild.children[1],
+        { scale: 0 },
+        { scale: 1, duration: 0.5 }
+      );
     return tl;
   }
 
@@ -130,7 +136,7 @@ function Project() {
     console.log(THREE);
     var master = gsap.timeline();
     master.add(first()).add(second(), "+=.2");
-  },[]);
+  }, []);
 
   return (
     <>
@@ -139,7 +145,9 @@ function Project() {
         <div className="mainLayout">
           <div className="leftLayout">
             <div className="leftLayoutChild0"></div>
-            <div className="leftLayoutChild1"></div>
+            <div className="leftLayoutChild1">
+              <p className="innerText">Z-FOLD</p>
+            </div>
             <div className="leftLayoutChild2" ref={priceAndButton}>
               <div className="price p">
                 <div className="price-title">Price</div>
@@ -151,11 +159,28 @@ function Project() {
             </div>
           </div>
           <div className="rightLayout">
-            <div className="rightLayoutMain"></div>
+            <div className="rightLayoutMain">
+              {/* <img src={logo} alt="loading..."  /> */}
+            </div>
             <div className="rightLayoutChild" ref={rightLayoutChild}>
               <div className="rightLayoutChild0"></div>
               <div className="rightLayoutChild1">
-                <canvas className="webgl"></canvas>
+                {/* <canvas className="webgl"></canvas> */}
+                <div className="first">
+                  <div className="contentHeader">Samsung Galaxy</div>
+                  <div className="contentDesc">
+                    Meet the phone that's changing the shape of the future.This
+                    cutting-edge smartphone puts powerful performance and a
+                    large immersive display all in the palm of your hand
+                  </div>
+                  <div className="contentButtons">
+                    <div className="contentButton">Design</div>
+                    <div className="contentButton">Flex mode</div>
+                    <div className="contentButton">Camera</div>
+                    <div className="contentButton">Performance</div>
+                  </div>
+                  <div className="contentFooter"></div>
+                </div>
               </div>
             </div>
           </div>
