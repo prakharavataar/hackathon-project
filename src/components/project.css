@@ -1,9 +1,18 @@
+/* Font import from google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Fuggles&family=Gentium+Basic&family=Markazi+Text&family=Oxygen:wght@300&display=swap");
+
+
+body {
+  background-color: #222222;
+}
+
 button {
   outline: none;
   border: none;
 }
 
+
+/* Progress bar css */
 .ok {
   position: absolute;
   top: 50%;
@@ -29,9 +38,8 @@ button {
   stroke-linejoin: round;
 }
 
-body {
-  background-color: #222222;
-}
+
+/* Main section css */
 
 .mainDiv {
   background-color: #2f2f2f;
@@ -41,6 +49,12 @@ body {
   flex-direction: column;
   gap: 20px;
   overflow-y: hidden;
+}
+
+.headers {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
 }
 
 .mainLayout {
@@ -68,11 +82,6 @@ body {
   border-radius: 25px 0 0 0px;
 }
 
-.headers {
-  height: 100vh;
-  width: 100vw;
-  background-color: white;
-}
 
 .rightLayoutChild {
   padding: 10px;
@@ -155,12 +164,10 @@ body {
 }
 
 .rightLayoutMain img {
-  width: 250px;
-  height: 250px;
-  padding: 20px;
   position: absolute;
   z-index: 1000;
   border-radius: 25px;
+  
 }
 
 .contentHeader {
@@ -187,6 +194,7 @@ body {
   margin:10px;
   margin-top: 20px;
   gap:10px;
+  padding:10px;
 }
 
 .contentButton{
@@ -199,4 +207,11 @@ body {
   border-radius: 15px;
   justify-content: center;
   align-items: center;
+}
+
+
+/* Image css */
+.samsung{
+  width:100%;
+  height:80%;
 }
