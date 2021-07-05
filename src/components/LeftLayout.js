@@ -1,7 +1,15 @@
-import React from "react";
+import React,{ useState} from "react";
 import "./project.css";
 
-function LeftLayout({ priceAndButton }) {
+function LeftLayout({ priceAndButton, setbuttonValue }) {
+
+  const [buttonActive, setbuttonActive] = useState(0)
+
+  function setButton(value){
+      setbuttonActive(value)
+      setbuttonValue(value)
+  }
+
   return (
     <div className="leftLayout">
       {/* first sectiong of left layout */}
@@ -12,6 +20,17 @@ function LeftLayout({ priceAndButton }) {
         {/* Z-fold written in absolute positioning */}
         <p className="innerText">Z-FOLD</p>
         {/* Button Section will be added here --> 3 button's in a Row -> total 2 Rows */}
+        <div className="mainButtons">
+          <div className="mainButtonsChild">
+            <button onClick={()=>setButton(0)}  className={buttonActive === 0 ? 'buttonActive': null}>default</button>
+          </div>
+          <div className="mainButtonsChild">
+            <button onClick={()=>setButton(1)}  className={buttonActive === 1 ? 'buttonActive': null}>camera</button>
+          </div>
+          <div className="mainButtonsChild">
+            <button onClick={()=>setButton(2)} className={buttonActive === 2 ? 'buttonActive': null} >fold</button>
+          </div>
+        </div>
       </div>
 
       {/* third section of left layout */}

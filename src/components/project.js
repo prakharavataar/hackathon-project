@@ -8,6 +8,8 @@ import RightLayout from "./RightLayout";
 function Project() {
   //Percentage For The Progress Bar
   const [percentage, setState] = useState(0);
+  //Image number to display based on button press no
+  const [imageDisplay,setImageDisplay] = useState(0);
 
   //Ref For Different Div's
   const progressBar = useRef(null);
@@ -105,6 +107,11 @@ function Project() {
   }
 
 
+  function setbuttonValue(value) {
+        console.log(value)
+        setImageDisplay(value)
+  }
+
   useEffect(() => {
     // Master timeline...
     var master = gsap.timeline();
@@ -116,15 +123,17 @@ function Project() {
     <>
       <div className="mainDiv" ref={mainDiv}>
         {/* Header Section */}
-        <div className="headers"></div>
+        <div className="headers">
+          
+        </div>
 
         {/* mainLayout Section */}
         <div className="mainLayout">
           {/* Left Layout Containing the Buttons and Price, buy option */}
-          <LeftLayout priceAndButton={priceAndButton}></LeftLayout>
+          <LeftLayout priceAndButton={priceAndButton} setbuttonValue={setbuttonValue}></LeftLayout>
 
           {/* Right Layout Containing two sections -> one with images and one with information */}
-          <RightLayout rightLayoutChild={rightLayoutChild}></RightLayout>
+          <RightLayout rightLayoutChild={rightLayoutChild} imageDisplay={imageDisplay}></RightLayout>
         </div>
       </div>
 

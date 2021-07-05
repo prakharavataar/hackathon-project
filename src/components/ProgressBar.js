@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./project.css";
 
 function ProgressBar({ sqSize, strokeWidth, percentage,reference }) {

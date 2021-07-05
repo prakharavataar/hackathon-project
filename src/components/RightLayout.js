@@ -1,47 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./project.css";
 // import THREE from "./three";
 import samsung from "../assests/samsung.webp";
+import fold from "../assests/fold.jpeg";
+import camera from "../assests/camera.jpg";
+import starRating from "../assests/starRating.png"
+import gsap from "gsap";
+import ReactPlayer from "react-player";
 
-function RightLayout({ rightLayoutChild }) {
+function RightLayout({ rightLayoutChild, imageDisplay }) {
+
+  const [srcOfImage, setsrcOfImage] = useState(samsung);
 
 
-  //Three.js load (if needed)
-  //   function threeLoad() {
-  //     const scene = new THREE.Scene();
-  //     const mainRefHeight = rightLayoutChild.current.children[1].offsetHeight;
-  //     const mainRefWidth = rightLayoutChild.current.children[1].offsetWidth;
-  //     scene.background = new THREE.Color("white");
-  //     const camera = new THREE.PerspectiveCamera(
-  //       75,
-  //       mainRefWidth / mainRefHeight,
-  //       0.1,
-  //       1000
-  //     );
-  //     const canvas = document.querySelector("canvas.webgl");
-  //     const renderer = new THREE.WebGLRenderer({ canvas });
-  //     renderer.setSize(mainRefWidth, mainRefHeight);
-
-  //     const spotLight = new THREE.SpotLight({ color: 0xffffff });
-  //     spotLight.position.set(100, 1000, 100);
-  //     spotLight.castShadow = true;
-  //     spotLight.shadow.mapSize.width = 1024;
-  //     spotLight.shadow.mapSize.height = 1024;
-
-  //     spotLight.shadow.camera.near = 500;
-  //     spotLight.shadow.camera.far = 4000;
-  //     spotLight.shadow.camera.fov = 30;
-
-  //     scene.add(spotLight);
-
-  //     renderer.render(scene, camera);
-  //     camera.position.z = 5;
-  //     const animate = function () {
-  //       requestAnimationFrame(animate);
-  //       renderer.render(scene, camera);
-  //     };
-  //     animate();
-  //   }
+  //Button actions
+  useEffect(() => {
+    const image = document.getElementsByClassName("samsung")[0];
+    if (imageDisplay === 1) {
+      setsrcOfImage(camera);
+    } else if (imageDisplay === 2) {
+      setsrcOfImage(fold);
+    } else {
+      setsrcOfImage(samsung);
+    }
+    gsap.fromTo(
+      image,
+      { visibility: "hidden", scale: 0 },
+      { visibility: "visible", scale: ".8", duration: 1, ease: "power1.out" }
+    );
+  }, [imageDisplay]);
 
   return (
     <div className="rightLayout">
@@ -49,7 +36,9 @@ function RightLayout({ rightLayoutChild }) {
       <div className="rightLayoutChild" ref={rightLayoutChild}>
         {/* First Section containing images, gif's or any other assests */}
         <div className="rightLayoutChild0">
-          <img src={samsung} alt="samsung" className="samsung"></img>
+          
+          <img src= {starRating} alt="4.5/5" classsName="starRating" className="abc"></img><div className="ratingText">4.5/5 (533)</div>
+          <img src={srcOfImage} alt="samsung" className="samsung"></img>
         </div>
         <div className="rightLayoutChild1">
           {/* Second Section that remains constant throughout the view   */}
@@ -66,6 +55,32 @@ function RightLayout({ rightLayoutChild }) {
               <div className="contentButton">Flex mode</div>
               <div className="contentButton">Camera</div>
               <div className="contentButton">Performance</div>
+            </div>
+            <div className="youtubeVideo">
+              <ReactPlayer
+                className="video"
+                url="https://www.youtube.com/watch?v=VTrMz9uBB34"
+                width="100%"
+                height="100%"
+              />
+            </div>
+            <div className="contentMiddle">
+              <div className="specs">
+                <div className="specsLeft">Technical Specification</div>
+                <div className="specsRight">&#62;</div>
+              </div>
+              <div className="specs">
+                <div className="specsLeft">Reviews</div>
+                <div className="specsRight">&#62;</div>
+              </div>
+              <div className="specs">
+                <div className="specsLeft">What you'll love</div>
+                <div className="specsRight">&#62;</div>
+              </div>
+              <div className="specs">
+                <div className="specsLeft">More about this devicea</div>
+                <div className="specsRight">&#62;</div>
+              </div>
             </div>
             <div className="contentFooter"></div>
           </div>
