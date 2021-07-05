@@ -7,6 +7,7 @@ import camera from "../assests/camera.jpg";
 import starRating from "../assests/starRating.png"
 import gsap from "gsap";
 import ReactPlayer from "react-player";
+import 'font-awesome/css/font-awesome.min.css';
 
 function RightLayout({ rightLayoutChild, imageDisplay }) {
 
@@ -29,6 +30,11 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
       { visibility: "visible", scale: ".8", duration: 1, ease: "power1.out" }
     );
   }, [imageDisplay]);
+
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
 
   return (
     <div className="rightLayout">
@@ -77,12 +83,23 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
                 <div className="specsLeft">What you'll love</div>
                 <div className="specsRight">&#62;</div>
               </div>
-              <div className="specs">
+              {/* <div className="specs">
                 <div className="specsLeft">More about this devicea</div>
                 <div className="specsRight">&#62;</div>
-              </div>
+              </div> */}
             </div>
-            <div className="contentFooter"></div>
+            {/* <div className="contentFooter"> */}
+              <section className='footer-subscription'>
+                <ul>
+                    <button className="btn" onClick={() => openInNewTab('https://www.facebook.com/SamsungIndia')}><i className="fa fa-facebook-square" style={{fontSize:24}}></i></button>
+                    <button className="btn" onClick={() => openInNewTab('https://twitter.com/samsungindia')}><i className="fa fa-twitter-square" style={{fontSize:24}}></i></button>
+                    <button className="btn" onClick={() => openInNewTab('https://www.instagram.com/samsungindia/')}><i className="fa fa-instagram" style={{fontSize:24}}></i></button>
+                    <button className="btn" onClick={() => openInNewTab('https://www.youtube.com/user/Samsungmobileindia')}><i className="fa fa-youtube-play" style={{fontSize:24}}></i></button>
+                    <button className="btn" onClick={() => openInNewTab('https://www.linkedin.com/company/samsung-india')}><i className="fa fa-linkedin-square" style={{fontSize:24}}></i></button>
+                    <button className="btn" onClick={() => openInNewTab('https://api.whatsapp.com/send?phone=91180057267864&text=&source=&data=')}><i className="fa fa-whatsapp" style={{fontSize:24}}></i></button>
+                </ul>
+              </section>
+            {/* </div> */}
           </div>
         </div>
       </div>

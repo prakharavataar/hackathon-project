@@ -4,6 +4,8 @@ import "./project.css";
 import gsap from "gsap";
 import LeftLayout from "./LeftLayout";
 import RightLayout from "./RightLayout";
+import Header from './Header';
+import Footer from './Footer';
 
 function Project() {
   //Percentage For The Progress Bar
@@ -124,7 +126,7 @@ function Project() {
       <div className="mainDiv" ref={mainDiv}>
         {/* Header Section */}
         <div className="headers">
-          
+          <Header/>
         </div>
 
         {/* mainLayout Section */}
@@ -137,7 +139,7 @@ function Project() {
         </div>
       </div>
 
-
+      {/* <Footer/> */}
       {/* Progress bar */}
       <ProgressBar
         strokeWidth="13"
