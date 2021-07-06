@@ -62,7 +62,7 @@ button {
 }
 
 .leftLayout {
-  background-color: #49557f;
+  background-color: rgba(0, 0, 0, 0.18);;
   border-radius: 0 25px 0px 0px;
 }
 
@@ -73,7 +73,7 @@ button {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.2);
   left: 0%;
   border-radius: 25px 0 0 0px;
 }
@@ -87,21 +87,21 @@ button {
 }
 
 .rightLayoutChild0 {
-  background-color: white;
+  background-color: rgb(127,148,167,.55);
   border: 0.5px solid #414b73;
   position: relative;
   border-radius: 25px;
 }
 
 .rightLayoutChild1 {
-  background-color: #49557f;
+  background-color: rgba(0, 0, 0, 0.18);
   border-radius: 25px;
   position: relative;
 }
 
 .leftLayoutChild0 {
   width: 100%;
-  height: 25%;
+  height: 15%;
   position: relative
 }
 
@@ -117,7 +117,7 @@ button {
 
 .leftLayoutChild1 {
   width: 100%;
-  height: 55%;
+  height: 70%;
 }
 
 .leftLayoutChild2 {
@@ -142,7 +142,7 @@ button {
 }
 
 .price-title {
-  color: #979abb;
+  color: #cdefff;
   font-size: 17px;
 }
 
@@ -155,18 +155,30 @@ button {
 .buyButton {
   padding: 15px;
   outline: none;
-  color: white;
-  font-size: 20px;
-  background-color: #ff6a62;
+  color: black;
+  font-size: 18px;
+  background-color:#cdefff;
+  font-weight: bold;
   border-radius: 10px;
+  cursor: pointer
 }
 
 .innerText {
-  font-size: 90px;
-  color: #424972;
-  margin-top: -25px;
+  font-size: 70px;
+  color: white;
+  margin-top: -40px;
   position: relative;
   text-align: center;
+}
+
+.innerTextChild{
+  font-size: 17px;
+  color: white;
+  margin-top:10px;
+  position: relative;
+  text-align: center;
+  padding:0 50px;
+  line-height:25px;
 }
 
 .rightLayoutMain img {
@@ -178,17 +190,25 @@ button {
 .contentHeader {
   color: white;
   margin: 15px;
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 26px;
   font-family: "Oxygen", sans-serif;
+  display:flex;
+  justify-content: center;
+}
+
+.contentHeader img{
+  width:120px;
 }
 
 .contentDesc {
   font-family: "Oxygen", sans-serif;
   font-size: 16px;
   color: white;
-  margin: 15px;
+  margin: 20px;
   margin-top: 20px;
+  line-height:25px;
+  text-align: justify;
 }
 
 .contentButtons {
@@ -198,6 +218,12 @@ button {
   gap: 10px;
   padding: 10px;
   justify-content: center;
+}
+
+.section0{
+  margin:0px;
+  padding:5px;
+  height:225px;
 }
 
 .contentButton {
@@ -223,7 +249,7 @@ button {
 }
 
 .mainButtons {
-  margin-top: 35px;
+  margin-top: 60px;
 }
 
 .mainButtons button {
@@ -261,10 +287,11 @@ button {
 .specs i{
   font-size: 14px;
   display:flex;
-  align-items: center
+  align-items: center;
 }
 
 .specs:hover{
+
   cursor: pointer;
   background-color: wheat;
   color: #2f2f2f;
@@ -294,9 +321,11 @@ button {
   margin-left: 10px;
 }
 .ratingText {
-  color: grey;
+  color: white;
   margin-left: 10px;
   display: inline-block;
+  position: absolute;
+  margin-top:15px;
 }
 
 .ratingDiv {
@@ -340,7 +369,9 @@ button {
 }
 
 .section3 {
+  padding:5px;
   margin: 0 15px;
+  max-height: 225px;
 }
 
 .section1 {
@@ -352,6 +383,13 @@ button {
 
 .sections1 {
   margin: 0 10px;
+  height:225px;
+  padding:5px;
+}
+
+.section2{
+  padding:5px;
+  height: 225px
 }
 
 .section1 img {
@@ -383,6 +421,7 @@ button {
   margin-bottom: 0px;
   padding: 0px 24px;
   color: #fff;
+  margin-top:25px;
 }
 
 .footer-subscription .rightLayoutFooterButton {
@@ -396,7 +435,8 @@ button {
 
 /* Darker background on mouse-over */
 .footer-subscription .rightLayoutFooterButton:hover {
-  background-color: RoyalBlue;
+  background-color: #CDF0FF;
+  color:black;
   border-radius: 10px;
 }
 .footer-subscription ul {
@@ -412,7 +452,7 @@ button {
 
 /* Button */
 
-.buttonContainer1,.buttonContainer0 {
+.buttonContainer1 {
   margin-top: -10%;
   width: 100%;
   height: auto;
@@ -424,6 +464,18 @@ button {
   gap: 10px;
 }
 
+
+.buttonContainer0 {
+  margin-top: -17%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
 
 .buttonContainer2 {
   margin-top: -5%;
@@ -438,7 +490,7 @@ button {
 }
 
 .container {
-  margin-top: 50px;
+  margin-top: 70px;
   width: 100px;
   display: flex;
   justify-content: center;
@@ -447,7 +499,7 @@ button {
 }
 
 .container a {
-  font-size: 7px;
+  font-size: 8.5px;
   width: 80px;
   height: 80px;
   color: #e9e9fa;
@@ -467,8 +519,8 @@ button {
 }
 
 .buttonContainer0 a{
-  width: 80px;
-  height: 30px;
+  width: 100px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -476,7 +528,7 @@ button {
   margin-bottom: 10px;
   border-radius: 5px;
   font-weight: bold;
-  font-size: 9px;
+  font-size: 12px;
 }
 
 
@@ -511,17 +563,18 @@ button {
 
 .buttonActive{
   background-color:white!important;
-  color: #49557f !important;;
+  color: black !important;
+  font-weight:bold;
 }
 
 .imageShowcase{
   display: flex;
-  gap:10px;
+  gap:12.5px;
   justify-content: center;
   align-items: center;
   overflow-x: scroll;
-  padding:10px;
-  bottom:0;
+  padding:0px;
+  bottom:25px;
   position:absolute;
   left:0;
   right:0;

@@ -26,7 +26,7 @@ function Section2({ section2, buttonActive }) {
   }, [buttonActive]);
 
   return (
-    <div ref={section2}>
+    <div ref={section2} className="section2">
       <div className="reviews-container">
         <h2>Reviews</h2>
         <div className="review">

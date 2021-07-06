@@ -28,7 +28,7 @@
     bottom: 0;
 }
 .nav-item:not(.is-active):hover {
-   color:purple ;
+   color:black ;
    letter-spacing: 2px;
  }
 .nav-indicator {

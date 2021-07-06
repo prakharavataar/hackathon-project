@@ -1,16 +1,17 @@
-import React from 'react'
-
+import React from "react";
+import samsung from "../../assests/mainlogo.png";
 function MainContent() {
-    return (
-        <>
-           <div className="contentHeader">Samsung Galaxy</div>
-            <div className="contentDesc">
-              Meet the phone that's changing the shape of the future.This
-              cutting-edge smartphone puts powerful performance and a large
-              immersive display all in the palm of your hand
-            </div> 
-        </>
-    )
+  return (
+    <>
+      <div className="contentHeader">
+        <img src={samsung} />
+      </div>
+      <div className="contentDesc">
+        This cutting-edge smartphone puts powerful performance and a large
+        immersive display all in the palm of your hand
+      </div>
+    </>
+  );
 }
 
-export default MainContent
+export default MainContent;

@@ -75,10 +75,10 @@ const Header = () => {
       </MobileIcon>
       <NavItems>
         {/* <NavbarLink to='/'>Home</NavbarLink> */}
-        <Link className="nav-item" to='/highlights' activeStyle={{color: "violet",textDecoration:"none"}}>Highlights</Link>
-        <Link className="nav-item" to='/design' activeStyle={{color: "violet",textDecoration:"none"}}>Design</Link>
-        <Link className="nav-item" to='/experience' activeStyle={{color: "violet",textDecoration:"none"}}>Experience</Link>
-        <Link className="nav-item" to='/accessories' activeStyle={{color: "violet",textDecoration:"none"}}>Accessories</Link>
+        <Link className="nav-item" to='/highlights' activeStyle={{color: "black",textDecoration:"none"}}>Highlights</Link>
+        <Link className="nav-item" to='/design' activeStyle={{color: "black",textDecoration:"none"}}>Design</Link>
+        <Link className="nav-item" to='/experience' activeStyle={{color: "black",textDecoration:"none"}}>Experience</Link>
+        <Link className="nav-item" to='/accessories' activeStyle={{color: "black",textDecoration:"none"}}>Accessories</Link>
         <span className="nav-indicator"></span>
       </NavItems>
     </Navbar>

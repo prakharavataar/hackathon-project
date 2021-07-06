@@ -13,7 +13,7 @@ function Three({ value, height, width }) {
     clock = new THREE.Clock();
     const mainRefHeight = height;
     const mainRefWidth = width;
-    scene.background = new THREE.Color("white");
+    scene.background = null;
     const camera = new THREE.PerspectiveCamera(
       75,
       mainRefWidth / mainRefHeight,
@@ -22,8 +22,9 @@ function Three({ value, height, width }) {
     );
     const loader = new GLTFLoader();
     const canvas = document.querySelector("canvas.webgl");
-    const renderer = new THREE.WebGLRenderer({ canvas });
+    const renderer = new THREE.WebGLRenderer({ canvas , alpha: true});
     renderer.setSize(mainRefWidth, mainRefHeight);
+    renderer.setClearColor( 0x000000, 0 );
     console.log(scene);
     const controls = new OrbitControls(camera, canvas);
     controls.update();

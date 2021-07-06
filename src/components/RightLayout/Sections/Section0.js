@@ -20,19 +20,13 @@ function Section0({ section0, buttonActive }) {
   }, [buttonActive]);
 
   return (
-    <div ref={section0}>
-      <div className="contentButtons">
-        <div className="contentButton">Design</div>
-        <div className="contentButton">Flex mode</div>
-        <div className="contentButton">Camera</div>
-        <div className="contentButton">Performance</div>
-      </div>
+    <div ref={section0} className="section0">   
       <div className="youtubeVideo">
         <ReactPlayer
           className="video"
           url="https://www.youtube.com/watch?v=VTrMz9uBB34"
           width="100%"
-          height="100%"
+          height="225px"
         />
       </div>
     </div>

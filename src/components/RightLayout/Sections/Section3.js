@@ -39,9 +39,9 @@ function Section3({ section3, buttonActive }) {
   }, [buttonActive]);
 
   return (
-    <div className="contentButtons section3" ref={section3}  style={{maxHeight:'225px'}}>
+    <div className="section3" ref={section3} >
       <ul
-        style={{ width: "100%", backgroundColor: "#F7F7F7",overflow: "scroll",borderRadius:'15px'}}
+        style={{ width: "100%", backgroundColor: "#F7F7F7",overflow: "scroll",borderRadius:'15px',maxHeight:'225px'}}
       >
         {array.map((item,index) => {
             return <li key={index} className="section3Li">{item}.</li>
