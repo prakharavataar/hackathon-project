@@ -2,20 +2,23 @@ import React, { useState, useEffect, useRef } from "react";
 import ProgressBar from "./ProgressBar";
 import "./project.css";
 import gsap from "gsap";
-import LeftLayout from "./LeftLayout";
-import RightLayout from "./RightLayout";
+import LeftLayout from "./LeftLayout/LeftLayout";
+import RightLayout from "./RightLayout/RightLayout";
+import Header from "./Header/Header";
 
 function Project() {
   //Percentage For The Progress Bar
   const [percentage, setState] = useState(0);
   //Image number to display based on button press no
-  const [imageDisplay,setImageDisplay] = useState(0);
+  const [imageDisplay, setImageDisplay] = useState(0);
 
   //Ref For Different Div's
   const progressBar = useRef(null);
   const rightLayoutChild = useRef(null);
   const priceAndButton = useRef(null);
+  const buttonSection = useRef(null);
   const mainDiv = useRef(null);
+  const leftLayoutHeader = useRef(null);
 
   //Progress Bar Load On Init
   function load() {
@@ -45,8 +48,8 @@ function Project() {
       .call(load, null, ">")
       .fromTo(
         mainDiv.current,
-        { height: 0, visibility: "hidden" },
-        { height: "100vh", duration: 0.4, visibility: "visible", delay: 1 }
+        { height: 0, autoAlpha: 0 },
+        { height: "100vh", duration: 0.4, autoAlpha: 1, delay: 1 }
       )
       .to(progressBar.current, {
         duration: 0.4,
@@ -59,7 +62,6 @@ function Project() {
 
   //Second Set Of Animations
   function second() {
-    const header = mainDiv.current.children[0];
     const leftLayout = mainDiv.current.children[1].children[0];
     const rightLayout = leftLayout.nextSibling.children[0];
     const rightChild = rightLayoutChild.current;
@@ -67,25 +69,21 @@ function Project() {
     const leftLayoutChild2 =
       document.getElementsByClassName("leftLayoutChild2")[0];
 
-    const innerText = document.getElementsByClassName("innerText")[0];
-
     var tl = gsap.timeline();
-    tl.fromTo(
-      header,
-      {
-        height: 0,
-      },
-      { height: 50, duration: 0.5, ease: "power1.out" }
-    )
-      .from(leftLayout, {
-        duration: 0.5,
-        width: 0,
-        ease: "power1.out",
-      })
+    tl.from(leftLayout, {
+      duration: 0.5,
+      width: 0,
+      ease: "power1.out",
+    })
       .fromTo(
-        [leftLayoutChild2, innerText],
-        { visibility: "hidden" },
-        { duration: 0.5, ease: "power1.in", visibility: "visible", delay: 0.5 }
+        [leftLayoutChild2],
+        { autoAlpha: 0 },
+        { duration: 0.5, ease: "power1.in", autoAlpha: 1, delay: 0.5 }
+      )
+      .fromTo(
+        [buttonSection.current,leftLayoutHeader.current],
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.5 }
       )
       .from(rightLayout, {
         duration: 0.5,
@@ -106,17 +104,15 @@ function Project() {
     return tl;
   }
 
-
   function setbuttonValue(value) {
-        console.log(value)
-        setImageDisplay(value)
+    console.log(value);
+    setImageDisplay(value);
   }
 
   useEffect(() => {
     // Master timeline...
     var master = gsap.timeline();
     master.add(first()).add(second(), "+=.2");
-
   }, []);
 
   return (
@@ -124,19 +120,26 @@ function Project() {
       <div className="mainDiv" ref={mainDiv}>
         {/* Header Section */}
         <div className="headers">
-          
+          <Header></Header>
         </div>
 
         {/* mainLayout Section */}
         <div className="mainLayout">
           {/* Left Layout Containing the Buttons and Price, buy option */}
-          <LeftLayout priceAndButton={priceAndButton} setbuttonValue={setbuttonValue}></LeftLayout>
+          <LeftLayout
+            priceAndButton={priceAndButton}
+            setbuttonValue={setbuttonValue}
+            buttonSection={buttonSection}
+            leftLayoutHeader={leftLayoutHeader}
+          ></LeftLayout>
 
           {/* Right Layout Containing two sections -> one with images and one with information */}
-          <RightLayout rightLayoutChild={rightLayoutChild} imageDisplay={imageDisplay}></RightLayout>
+          <RightLayout
+            rightLayoutChild={rightLayoutChild}
+            imageDisplay={imageDisplay}
+          ></RightLayout>
         </div>
       </div>
-
 
       {/* Progress bar */}
       <ProgressBar

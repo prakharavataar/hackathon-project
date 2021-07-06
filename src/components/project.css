@@ -103,7 +103,18 @@ button {
 .leftLayoutChild0 {
   width: 100%;
   height: 25%;
+  position: relative
 }
+
+.leftLayoutChild0 img{
+  position: absolute;
+  width:250px;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%)
+}
+
+
 
 .leftLayoutChild1 {
   width: 100%;
@@ -154,9 +165,9 @@ button {
 .innerText {
   font-size: 120px;
   color: #424972;
-  margin-left: 30px;
   margin-top: -20px;
-  position: absolute;
+  position: relative;
+  text-align: center;
 }
 
 .rightLayoutMain img {
@@ -187,15 +198,16 @@ button {
   margin-top: 20px;
   gap: 10px;
   padding: 10px;
+  justify-content: center;
 }
 
 .contentButton {
   background-color: white;
   color: #49557f;
   display: flex;
-  width: 80px;
-  height: 80px;
-  font-size: 12px;
+  width: 70px;
+  height: 70px;
+  font-size: 10px;
   border-radius: 15px;
   justify-content: center;
   align-items: center;
@@ -207,13 +219,13 @@ button {
   height: 80%;
 }
 
-.mainButtons button {
-  color: yellow;
-  cursor: pointer;
+.mainButtons {
+  margin-top: 35px;
 }
 
-.buttonActive {
-  color: blue !important;
+.mainButtons button {
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .youtubeVideo {
@@ -240,7 +252,28 @@ button {
   color: white;
   /* font-family: 'Fuggles', cursive;
   font-family: 'Markazi Text', serif;  */
-  font-family: 'Gentium Basic', serif;
+  font-family: "Gentium Basic", serif;
+}
+
+.specs i{
+  font-size: 14px;
+  display:flex;
+  align-items: center
+}
+
+.specs:hover{
+  cursor: pointer;
+  background-color: wheat;
+  color: #2f2f2f;
+}
+
+.specsButtonActive {
+  background-color: wheat;
+  color: #2f2f2f;
+}
+
+.specsButtonActive i{
+  color:black;
 }
 
 .specsRight {
@@ -251,15 +284,234 @@ button {
   font-size: 17px;
 }
 
-
-.abc{
-  position:relative; 
-  margin-top:10px;
+.abc {
+  position: relative;
+  margin-top: 10px;
   width: 100px;
-  margin-left: 10px
-}
-.ratingText{
-  color:grey;
   margin-left: 10px;
-  display:inline-block;
 }
+.ratingText {
+  color: grey;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.ratingDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ratingDivright {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.colorCircle {
+  background: #f00;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.bronze {
+  background: #a98078;
+}
+
+.black {
+  background: #303030;
+}
+
+
+.section3Li {
+  list-style: none;
+  padding: 5px;
+  margin-left: 5px;
+  font-size: 14px;
+  color:grey;
+  font-style: italic;
+}
+
+.section3 {
+  margin: 0 15px;
+}
+
+.section1 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+}
+
+.sections1 {
+  margin: 0 10px;
+}
+
+.section1 img {
+  border-radius: 10px;
+  width: 150px;
+  display: block;
+  margin: 1px auto;
+}
+
+.section1 p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
+
+.section1 p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Footer icons */
+.footer-subscription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 0px;
+  padding: 0px 24px;
+  color: #fff;
+}
+
+.footer-subscription .rightLayoutFooterButton {
+  background-color: inherit;
+  border: none;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Darker background on mouse-over */
+.footer-subscription .rightLayoutFooterButton:hover {
+  background-color: RoyalBlue;
+  border-radius: 10px;
+}
+.footer-subscription ul {
+  width: 100%;
+}
+
+/* .fa-facebook-square {color:white;}
+  .fa-twitter-square {color:white;}
+  .fa-instagram {color:white;}
+  .fa-youtube-play {color:white;}
+  .fa-linkedin-square {color:white;}
+  .fa-whatsapp {color:white;} */
+
+/* Button */
+
+.buttonContainer1 {
+  margin-top: -10%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.buttonContainer2 {
+  margin-top: -5%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.container {
+  margin-top: 50px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
+
+.container a {
+  font-size: 7px;
+  width: 80px;
+  height: 80px;
+  color: #e9e9fa;
+  text-transform: uppercase;
+}
+
+.btnLeftLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 1px solid rgb(146, 148, 248);
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.btnLeftLayout .icon {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.btnLeftLayout:hover {
+  box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+}
+
+.btnLeftLayout:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(146, 148, 248, 0.4),
+    transparent
+  );
+  transition: all 650ms;
+}
+
+.btnLeftLayout:hover:before {
+  left: 100%;
+}
+
+.buttonActive{
+  background-color:white!important;
+  color: #49557f !important;;
+}
+
+.imageShowcase{
+  display: flex;
+  gap:10px;
+  justify-content: center;
+  align-items: center;
+  overflow-x: scroll;
+  padding:10px;
+}
+
+.imageShowcase img{
+  width:100px;
+  height:80px;
+  background-position: center;
+  background-size: cover;
+  border:.5px solid grey;
+  border-radius: 10px;
+}
+
+
