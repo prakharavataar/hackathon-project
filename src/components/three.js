@@ -43,17 +43,10 @@ function Three({ value, height, width }) {
         console.log("An error happened");
       }
     );
-    const spotLight = new THREE.SpotLight({ color: 0xffffff });
-    spotLight.position.set(100, 1000, 100);
-    spotLight.castShadow = true;
-    spotLight.shadow.mapSize.width = 1024;
-    spotLight.shadow.mapSize.height = 1024;
-
-    spotLight.shadow.camera.near = 500;
-    spotLight.shadow.camera.far = 4000;
-    spotLight.shadow.camera.fov = 30;
-
-    scene.add(spotLight);
+    const color = 0xFFFFFF;
+    const intensity = 5;
+    const light = new THREE.AmbientLight(color, intensity);
+    scene.add(light);
 
     renderer.render(scene, camera);
     camera.position.z = 5;

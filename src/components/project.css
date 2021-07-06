@@ -45,7 +45,8 @@ button {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  overflow-y: hidden;
+  overflow-y:auto;
+
 }
 
 .headers {
