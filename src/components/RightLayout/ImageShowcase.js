@@ -1,30 +1,32 @@
 import React from "react";
-import samsung from "../../assests/samsung.webp";
-import fold from "../../assests/fold.jpeg";
-import camera from "../../assests/camera.jpg"
+import samsungspecs1 from "../../assests/samsungspecs1.jpg"
+import samsungspecs6 from "../../assests/samsungspecs6.png"
+import samsungspecs3 from "../../assests/samsungspecs3.png"
+import samsungspecs4 from "../../assests/samsungspecs4.png"
+import samsungspecs5 from "../../assests/samsungspecs5.png"
 
-function ImageShowcase({width, changeImage}) {
+function ImageShowcase({width, changeImage,imageShowcaseRef}) {
   return (
-    <div className="imageShowcase" style={{width:width}}>
+    <div className="imageShowcase" style={{width:width}} ref={imageShowcaseRef}>
       <div>
         {" "}
-        <img src={samsung} onClick={()=>changeImage(0)}></img>
+        <img src={samsungspecs1} onClick={()=>changeImage(samsungspecs1)}></img>
       </div>
       <div>
         {" "}
-        <img src={camera} onClick={()=>changeImage(1)}></img>
+        <img src={samsungspecs6} onClick={()=>changeImage(samsungspecs6)}></img>
       </div>{" "}
       <div>
         {" "}
-        <img src={fold} onClick={()=>changeImage(2)}></img>
+        <img src={samsungspecs3} onClick={()=>changeImage(samsungspecs3)}></img>
       </div>{" "}
       <div>
         {" "}
-        <img src={samsung} onClick={()=>changeImage(3)}></img>
+        <img src={samsungspecs4} onClick={()=>changeImage(samsungspecs4)}></img>
       </div>{" "}
       <div>
         {" "}
-        <img src={camera} onClick={()=>changeImage(4)}></img>
+        <img src={samsungspecs5} onClick={()=>changeImage(samsungspecs5)}></img>
       </div>{" "}
     </div>
   );

@@ -1,10 +1,10 @@
 import React from "react";
 import starRating from "../../assests/starRating.png";
 
-function Rating() {
+function Rating({ratingRef}) {
   return (
     <>
-      <div className="ratingDiv">
+      <div className="ratingDiv" ref={ratingRef}>
         <div className="ratingDivLeft">
           <img
             src={starRating}

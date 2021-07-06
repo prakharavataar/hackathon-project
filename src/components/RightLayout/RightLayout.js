@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../project.css";
 import samsung from "../../assests/samsung.webp";
-import fold from "../../assests/fold.jpeg";
-import camera from "../../assests/camera.jpg";
 import gsap from "gsap";
 import Section0 from "./Sections/Section0";
 import Section1 from "./Sections/Section1";
@@ -13,6 +11,13 @@ import Rating from "./Rating";
 import MainContent from "./MainContent";
 import ContentFooter from "./ContentFooter";
 import ImageShowcase from "./ImageShowcase";
+import flex from "../../assests/flex.gif";
+import multi from "../../assests/multi.webp";
+import camera from "../../assests/camera.jpeg";
+import performance from "../../assests/performance.jpeg";
+import design from "../../assests/design.jpeg";
+import battery from "../../assests/battery.jpeg";
+import Three from "../three";
 
 
 function RightLayout({ rightLayoutChild, imageDisplay }) {
@@ -21,86 +26,105 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
   const section1 = useRef(null);
   const section2 = useRef(null);
   const section3 = useRef(null);
+  const imageShowcaseRef = useRef(null);
+  const ratingRef = useRef(null);
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
 
-  const [srcOfImage, setsrcOfImage] = useState(fold);
-  const [width, setWidth] = useState(300)
+  //main states
+  const [srcOfImage, setsrcOfImage] = useState(samsung);
+  const [width, setWidth] = useState(300);
   const [buttonActive, setButtonActive] = useState(0);
+  const [value, setValue] = useState(0)
+  const [height, setHeight] = useState(600)
 
   function transition(value) {
     setButtonActive(value);
   }
 
-  function changeImage(value){
+  //change image from bottom slider
+  function changeImage(value) {
     const image = document.getElementsByClassName("samsung")[0];
-    // if(value == 0)
-    // setsrcOfImage(samsung);
-    // else if (value == 1)
-    // setsrcOfImage(camera);
-    // else if (value == 2)
-    // setsrcOfImage(fold)
-    // else
-    // setsrcOfImage(samsung)
-    setsrcOfImage(samsung)
+    setsrcOfImage(value);
+    image.style.bottom = 175 + "px";
     gsap.fromTo(
       image,
-      { visibility: "hidden", scale: 0 },
-      { visibility: "visible", scale: ".8", duration: 1, ease: "power1.out" }
+      { autoAlpha: 0, scale: 0 },
+      { autoAlpha: 1, scale: ".75", duration: 1, ease: "power1.out" }
     );
   }
 
+
+  //set display of rightmost layout
   function sectionDisplay() {
     if (buttonActive === 0) {
       return (
-        <Section0
-          section0={section0}
-          buttonActive={buttonActive}
-        ></Section0>
+        <Section0 section0={section0} buttonActive={buttonActive}></Section0>
       );
     } else if (buttonActive === 1) {
       return (
-        <Section1
-          section1={section1}
-          buttonActive={buttonActive}
-        ></Section1>
+        <Section1 section1={section1} buttonActive={buttonActive}></Section1>
       );
     } else if (buttonActive === 2) {
       return (
-        <Section2
-          section2={section2}
-          buttonActive={buttonActive}
-        ></Section2>
+        <Section2 section2={section2} buttonActive={buttonActive}></Section2>
       );
     } else {
       return (
-        <Section3
-          section3={section3}
-          buttonActive={buttonActive}
-        ></Section3>
+        <Section3 section3={section3} buttonActive={buttonActive}></Section3>
       );
     }
   }
 
-
   //Button actions from left will change this sections images/models/gifs
   useEffect(() => {
-    const width = document.getElementsByClassName("rightLayoutChild0")[0].offsetWidth;
-    setWidth(width)
-    const image = document.getElementsByClassName("samsung")[0];
-    console.log('image display value --->'+ imageDisplay)
-    if (imageDisplay == 1) {
-      setsrcOfImage(camera);
-    } else if (imageDisplay == 2) {
-      setsrcOfImage(fold);
+
+    if (imageDisplay == -1) {
+      ref1.current.style.display = "none"
+      ref2.current.style.display = "block";
+      setValue(1)
     } else {
-      setsrcOfImage(samsung);
+      ref1.current.style.display="block"
+      ref2.current.style.display= "none";
+    }
+
+    const mainHeight = rightLayoutChild.current.children[0].offsetHeight;
+    const heightImageShowcase = imageShowcaseRef.current.offsetHeight;
+    const heightRating = ratingRef.current.offsetHeight;
+    const heightOfSamsung = mainHeight - (heightImageShowcase + heightRating);
+    const mainWidth = rightLayoutChild.current.children[0].offsetWidth;
+
+    setWidth(mainWidth);
+    setHeight(mainHeight)
+
+    console.log(heightOfSamsung + "----" + mainWidth);
+    const image = document.getElementsByClassName("samsung")[0];
+    image.style.maxWidth = mainWidth - 200 + "px";
+    image.style.maxHeight = heightOfSamsung + "px";
+    image.style.bottom = 225 + "px";
+    console.log("image display value --->" + imageDisplay);
+
+    if (imageDisplay == 1) {
+      setsrcOfImage(design);
+    } else if (imageDisplay == 2) {
+      setsrcOfImage(multi);
+    } else if (imageDisplay == 3) {
+      setsrcOfImage(performance);
+    } else if (imageDisplay == 4) {
+      setsrcOfImage(battery);
+    } else if (imageDisplay == 5) {
+      setsrcOfImage(camera);
+    } else if (imageDisplay == 0){
+      setsrcOfImage(flex);
     }
 
     gsap.fromTo(
       image,
-      { visibility: "hidden", scale: 0 },
-      { visibility: "visible", scale: ".8", duration: 1, ease: "power1.out" }
+      { autoAlpha: 0, scale: 0 },
+      { autoAlpha: 1, scale: ".9", duration: 1, ease: "power1.out" }
     );
 
+  
   }, [imageDisplay]);
 
   return (
@@ -109,10 +133,20 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
       <div className="rightLayoutChild" ref={rightLayoutChild}>
         {/* First Section containing images, gif's or any other assests */}
         <div className="rightLayoutChild0">
-          <Rating></Rating>
-          <img src={srcOfImage} alt="samsung" className="samsung"></img>
-          <ImageShowcase width={width} changeImage={changeImage}></ImageShowcase>
+          <div style={{ display: "none" }} ref={ref1}>
+            <Rating ratingRef={ratingRef}></Rating>
+            <img src={srcOfImage} alt="samsung" className="samsung"></img>
+            <ImageShowcase
+              width={width}
+              changeImage={changeImage}
+              imageShowcaseRef={imageShowcaseRef}
+            ></ImageShowcase>
+          </div>
+          <div style={{ display: "none" }} ref={ref2}>
+            <Three value={value} height ={height -200} width={width-200}></Three>
+          </div>
         </div>
+
         <div className="rightLayoutChild1">
           {/* Second Section that remains constant throughout the view   */}
           <div className="first">

@@ -1,6 +1,3 @@
-nav{
-    background-color: coral !important;
-}
 .nav-item {
     color: white;
     padding: 20px;
@@ -12,6 +9,7 @@ nav{
     font-weight: 500;
     position: relative;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 .nav-item:before {
     content: "";
@@ -43,6 +41,12 @@ nav{
     z-index: 1;
     border-radius: 8px 8px 0 0;
 }
+
+.mainlogo{
+    width:85px;
+    margin-top:10px;
+}
+
 @media (max-width: 580px) {
     .nav {
         overflow: auto;

@@ -20,6 +20,7 @@ function Section1({ section1, buttonActive }) {
     }
   }, [buttonActive]);
 
+
   return (
     <div className="contentButtons sections1" ref={section1}>
       <div className="section1">

@@ -1,17 +1,22 @@
 import React, { useState } from "react";
-import Button from "./Button"
-import logo from "../../assests/mainlogo.png"
+import Button from "./Button";
+import logo from "../../assests/mainlogo.png";
 import "../project.css";
 
-function LeftLayout({ priceAndButton, setbuttonValue, buttonSection , leftLayoutHeader}) {
-  const [buttonActive, setbuttonActive] = useState(0);
+
+function LeftLayout({
+  priceAndButton,
+  setbuttonValue,
+  buttonSection,
+  leftLayoutHeader,
+}) {
+  const [buttonActive, setbuttonActive] = useState("-1");
 
   function setButton(value) {
-    console.log('value---leftLayout',value)
+    console.log("value---leftLayout", value);
     setbuttonActive(value);
     setbuttonValue(value);
   }
-  
 
   return (
     <div className="leftLayout">
@@ -26,16 +31,60 @@ function LeftLayout({ priceAndButton, setbuttonValue, buttonSection , leftLayout
         <p className="innerText">Z-FOLD</p>
         {/* Button Section will be added here --> 3 button's in a Row -> total 2 Rows */}
         <div className="mainButtons">
+          <div className="buttonContainer0">
+            <Button
+              buttonName="Experience"
+              setButton={setButton}
+              value="-1"
+              buttonActive={buttonActive}
+            />
+          </div>
           <div className="buttonContainer1">
-            <Button buttonName="Design" setButton={setButton} value="0" buttonActive={buttonActive} iconClass="fa fa-paint-brush"/>
-            <Button buttonName="Flex Mode" setButton={setButton} value="1" buttonActive={buttonActive} iconClass="fa fa-laptop" /> 
-            <Button buttonName="Multitasking" setButton={setButton} value="2" buttonActive={buttonActive} iconClass="fa fa-window-restore"/>
+            <Button
+              buttonName="Flex Mode"
+              setButton={setButton}
+              value="0"
+              buttonActive={buttonActive}
+              iconClass="fa fa-laptop"
+            />
+            <Button
+              buttonName="Design"
+              setButton={setButton}
+              value="1"
+              buttonActive={buttonActive}
+              iconClass="fa fa-paint-brush"
+            />
+            <Button
+              buttonName="Multitasking"
+              setButton={setButton}
+              value="2"
+              buttonActive={buttonActive}
+              iconClass="fa fa-window-restore"
+            />
           </div>
 
           <div className="buttonContainer2">
-            <Button buttonName="Performance" setButton={setButton} value="3" buttonActive={buttonActive} iconClass="fa fa-rocket"/>
-            <Button buttonName="Battery" setButton={setButton} value="4" buttonActive={buttonActive} iconClass="fa fa-battery-full"/>
-            <Button buttonName="Camera" setButton={setButton} value="5" buttonActive={buttonActive} iconClass="fa fa-camera"/>
+            <Button
+              buttonName="Performance"
+              setButton={setButton}
+              value="3"
+              buttonActive={buttonActive}
+              iconClass="fa fa-rocket"
+            />
+            <Button
+              buttonName="Battery"
+              setButton={setButton}
+              value="4"
+              buttonActive={buttonActive}
+              iconClass="fa fa-battery-full"
+            />
+            <Button
+              buttonName="Camera"
+              setButton={setButton}
+              value="5"
+              buttonActive={buttonActive}
+              iconClass="fa fa-camera"
+            />
           </div>
         </div>
       </div>

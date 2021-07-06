@@ -10,7 +10,7 @@ function Project() {
   //Percentage For The Progress Bar
   const [percentage, setState] = useState(0);
   //Image number to display based on button press no
-  const [imageDisplay, setImageDisplay] = useState(0);
+  const [imageDisplay, setImageDisplay] = useState(-1);
 
   //Ref For Different Div's
   const progressBar = useRef(null);
@@ -71,22 +71,22 @@ function Project() {
 
     var tl = gsap.timeline();
     tl.from(leftLayout, {
-      duration: 0.5,
+      duration: 0.3,
       width: 0,
       ease: "power1.out",
     })
       .fromTo(
         [leftLayoutChild2],
         { autoAlpha: 0 },
-        { duration: 0.5, ease: "power1.in", autoAlpha: 1, delay: 0.5 }
+        { duration: 0.3, ease: "power1.in", autoAlpha: 1, delay: 0.5 }
       )
       .fromTo(
         [buttonSection.current,leftLayoutHeader.current],
         { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 0.5 }
+        { autoAlpha: 1, duration: 0.3 }
       )
       .from(rightLayout, {
-        duration: 0.5,
+        duration: 0.4,
         width: 0,
         left: "100%",
         ease: "power1.out",
@@ -94,12 +94,12 @@ function Project() {
       .fromTo(
         rightChild.children[0],
         { scale: 0 },
-        { scale: 1, duration: 0.5, delay: 0.5 }
+        { scale: 1, duration: 0.4, delay: 0.4 }
       )
       .fromTo(
         rightChild.children[1],
         { scale: 0 },
-        { scale: 1, duration: 0.5 }
+        { scale: 1, duration: 0.4 }
       );
     return tl;
   }

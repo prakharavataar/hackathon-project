@@ -39,7 +39,7 @@ button {
 /* Main section css */
 
 .mainDiv {
-  background-color: #2f2f2f;
+  background:url(../assests/backgroundMain.jpeg);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -51,7 +51,6 @@ button {
 .headers {
   height: 50px;
   width: 100vw;
-  background-color: white;
 }
 
 .mainLayout {
@@ -108,7 +107,7 @@ button {
 
 .leftLayoutChild0 img{
   position: absolute;
-  width:250px;
+  width:200px;
   left:50%;
   top:50%;
   transform: translate(-50%,-50%)
@@ -163,9 +162,9 @@ button {
 }
 
 .innerText {
-  font-size: 120px;
+  font-size: 90px;
   color: #424972;
-  margin-top: -20px;
+  margin-top: -25px;
   position: relative;
   text-align: center;
 }
@@ -215,8 +214,12 @@ button {
 
 /* Image css */
 .samsung {
-  width: 100%;
-  height: 80%;
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  bottom:250px;
+  margin-left: auto; 
+  margin-right: auto; 
 }
 
 .mainButtons {
@@ -409,7 +412,7 @@ button {
 
 /* Button */
 
-.buttonContainer1 {
+.buttonContainer1,.buttonContainer0 {
   margin-top: -10%;
   width: 100%;
   height: auto;
@@ -420,6 +423,7 @@ button {
   text-align: center;
   gap: 10px;
 }
+
 
 .buttonContainer2 {
   margin-top: -5%;
@@ -462,6 +466,20 @@ button {
   border-radius: 15px;
 }
 
+.buttonContainer0 a{
+  width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: inherit;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 9px;
+}
+
+
 .btnLeftLayout .icon {
   margin-bottom: 10px;
   font-size: 18px;
@@ -503,15 +521,28 @@ button {
   align-items: center;
   overflow-x: scroll;
   padding:10px;
+  bottom:0;
+  position:absolute;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right: auto;
 }
 
 .imageShowcase img{
-  width:100px;
+  width:80px;
   height:80px;
   background-position: center;
   background-size: cover;
   border:.5px solid grey;
   border-radius: 10px;
+}
+
+.webgl{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%)
 }
 
 

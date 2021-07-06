@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import './Header.css';
 import Burger from './Burger.js';
+import samsunglogo from '../../assests/mainlogo3.png'
 
 const Navbar = styled.nav`
   height: 60px;
@@ -18,7 +19,7 @@ const Logo = styled(Link)`
   color: #fff;
   padding-left: 1rem;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   font-style: italic;
 `;
@@ -67,7 +68,7 @@ export const MobileIcon = styled.div `
 const Header = () => {
   return (
     <Navbar >
-      <Logo to='/'>Samsung</Logo>
+      <Logo to='/'><img src={samsunglogo} className="mainlogo"></img></Logo>
       <MobileIcon>
         {/* <Bars /> */}
           <Burger />
