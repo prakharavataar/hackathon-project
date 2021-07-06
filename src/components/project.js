@@ -5,12 +5,15 @@ import gsap from "gsap";
 import LeftLayout from "./LeftLayout/LeftLayout";
 import RightLayout from "./RightLayout/RightLayout";
 import Header from "./Header/Header";
+import { useMediaQuery } from "react-responsive";
+import MainLayoutMobile from "./mainLayoutMobile"
 
 function Project() {
   //Percentage For The Progress Bar
   const [percentage, setState] = useState(0);
   //Image number to display based on button press no
   const [imageDisplay, setImageDisplay] = useState(-1);
+  const [zvalue, setzvalue] = useState(0)
 
   //Ref For Different Div's
   const progressBar = useRef(null);
@@ -19,6 +22,14 @@ function Project() {
   const buttonSection = useRef(null);
   const mainDiv = useRef(null);
   const leftLayoutHeader = useRef(null);
+
+  //responsive sizes
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-device-width: 600px)",
+  });
+  const isTabletOrMobileDevice = useMediaQuery({
+    query: "(max-device-width: 600px)",
+  });
 
   //Progress Bar Load On Init
   function load() {
@@ -30,13 +41,18 @@ function Project() {
     }
   }
 
+  function changeZ(){
+    console.log('changeZIndex')
+    setzvalue(!zvalue);
+  }
+
   //First Set Of Animations
   function first() {
     var tl = gsap.timeline();
-
     tl.to(progressBar.current, {
       visibility: "hidden",
       scale: 0,
+      delay: 0.1,
     })
       .to(progressBar.current, {
         duration: 0.4,
@@ -71,19 +87,19 @@ function Project() {
 
     var tl = gsap.timeline();
     tl.from(leftLayout, {
-      duration: 0.3,
+      duration: 0.4,
       width: 0,
       ease: "power1.out",
     })
       .fromTo(
         [leftLayoutChild2],
         { autoAlpha: 0 },
-        { duration: 0.3, ease: "power1.in", autoAlpha: 1, delay: 0.5 }
+        { duration: 0.4, ease: "power1.in", autoAlpha: 1, delay: 0.5 }
       )
       .fromTo(
-        [buttonSection.current,leftLayoutHeader.current],
+        [buttonSection.current, leftLayoutHeader.current],
         { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 0.3 }
+        { autoAlpha: 1, duration: 0.4 }
       )
       .from(rightLayout, {
         duration: 0.4,
@@ -112,7 +128,10 @@ function Project() {
   useEffect(() => {
     // Master timeline...
     var master = gsap.timeline();
-    master.add(first()).add(second(), "+=.2");
+    if (isDesktopOrLaptop) master.add(first()).add(second(), "+=.2");
+    else {
+      master.add(first());
+    }
   }, []);
 
   return (
@@ -120,25 +139,36 @@ function Project() {
       <div className="mainDiv" ref={mainDiv}>
         {/* Header Section */}
         <div className="headers">
-          <Header></Header>
+          <Header changeZ ={changeZ} ></Header>
         </div>
 
-        {/* mainLayout Section */}
-        <div className="mainLayout">
-          {/* Left Layout Containing the Buttons and Price, buy option */}
-          <LeftLayout
-            priceAndButton={priceAndButton}
-            setbuttonValue={setbuttonValue}
-            buttonSection={buttonSection}
-            leftLayoutHeader={leftLayoutHeader}
-          ></LeftLayout>
+        {/* mainLayout Section  --> responsiveness taken into account */}
 
-          {/* Right Layout Containing two sections -> one with images and one with information */}
-          <RightLayout
-            rightLayoutChild={rightLayoutChild}
-            imageDisplay={imageDisplay}
-          ></RightLayout>
-        </div>
+        {isDesktopOrLaptop && (
+          <>
+            <div className="mainLayout">
+              {/* Left Layout Containing the Buttons and Price, buy option */}
+              <LeftLayout
+                priceAndButton={priceAndButton}
+                setbuttonValue={setbuttonValue}
+                buttonSection={buttonSection}
+                leftLayoutHeader={leftLayoutHeader}
+              ></LeftLayout>
+
+              {/* Right Layout Containing two sections -> one with images and one with information */}
+              <RightLayout
+                rightLayoutChild={rightLayoutChild}
+                imageDisplay={imageDisplay}
+              ></RightLayout>
+            </div>
+          </>
+        )}
+        {isTabletOrMobileDevice && (
+          <>
+            <MainLayoutMobile zvalue={zvalue}></MainLayoutMobile>
+          </>
+        )}
+
       </div>
 
       {/* Progress bar */}

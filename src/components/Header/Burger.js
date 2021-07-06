@@ -18,7 +18,7 @@ const StyledBurger = styled.div`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => open ? 'yellow' : 'yellow'};
+    background-color: ${({ open }) => open ? 'white' : 'white'};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
@@ -35,12 +35,17 @@ const StyledBurger = styled.div`
   }
 `;
 
-const Burger = () => {
+const Burger = ({changeZ}) => {
   const [open, setOpen] = useState(false)
+
+  function changeZIndex(){
+    setOpen(!open)
+    changeZ()
+  }
   
   return (
     <>
-      <StyledBurger open={open} onClick={() => setOpen(!open)}>
+      <StyledBurger open={open} onClick={() => changeZIndex()}>
         <div />
         <div />
         <div />

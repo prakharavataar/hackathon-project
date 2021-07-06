@@ -12,6 +12,7 @@ const Ul = styled.ul`
   @media (max-width: 768px) {
     flex-flow: column nowrap;
     background-color: #0D2538;
+    display: ${({ open }) => open ? 'block' : 'none'};
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(1%)' : 'translateX(100%)'};
     top: 0;
@@ -34,14 +35,14 @@ export const SidebarWrapper = styled.div `
 export const SidebarLink = styled(Link)`
     display: flex;
     align-items:center;
-    // justify-content: center;
-    margin-left: 25px;
+    justify-content: center;
     font-size: 1.5rem;
     text-decoration: none;
     list-style: none;
     transition: 0.2s ease-in-out;
     color:#fff;
     cursor: pointer;
+    z-index:1000;
 
     &:hover {
         color: #01bf71;

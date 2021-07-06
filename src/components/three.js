@@ -5,10 +5,12 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import React, { useEffect } from "react";
 import gsap from "gsap";
 
-function Three({ value, height, width }) {
+function Three({ value, height , width }) {
   let clock;
   //Three.js load (if needed)
+
   function threeLoad(height, width) {
+    console.log(height, width)
     const scene = new THREE.Scene();
     clock = new THREE.Clock();
     const mainRefHeight = height;
@@ -64,7 +66,7 @@ function Three({ value, height, width }) {
   }
 
   useEffect(() => {
-    if (value === 1) {
+    if (value == 1) {
       gsap.fromTo(
         document.getElementsByClassName("webgl")[0],
         { autoAlpha: 0, scale: 0 },

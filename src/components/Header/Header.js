@@ -65,13 +65,13 @@ export const MobileIcon = styled.div `
 //   font-size: 20px;
 // `;
 
-const Header = () => {
+const Header = ({changeZ}) => {
   return (
     <Navbar >
       <Logo to='/'><img src={samsunglogo} className="mainlogo"></img></Logo>
       <MobileIcon>
         {/* <Bars /> */}
-          <Burger />
+          <Burger changeZ = {changeZ} />
       </MobileIcon>
       <NavItems>
         {/* <NavbarLink to='/'>Home</NavbarLink> */}
