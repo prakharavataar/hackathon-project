@@ -105,6 +105,20 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
       ref2.current.style.display = "none";
     }
 
+    if (imageDisplay == 1) {
+      setsrcOfImage(design);
+    } else if (imageDisplay == 2) {
+      setsrcOfImage(multi);
+    } else if (imageDisplay == 3) {
+      setsrcOfImage(performance);
+    } else if (imageDisplay == 4) {
+      setsrcOfImage(battery);
+    } else if (imageDisplay == 5) {
+      setsrcOfImage(camera);
+    } else if (imageDisplay == 0) {
+      setsrcOfImage(flex);
+    }
+
     const mainHeight = rightLayoutChild.current.children[0].offsetHeight;
     const heightImageShowcase = imageShowcaseRef.current.offsetHeight;
     const heightRating = ratingRef.current.offsetHeight;
@@ -120,20 +134,6 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
     image.style.maxHeight = heightOfSamsung + "px";
     image.style.bottom = 225 + "px";
     console.log("image display value --->" + imageDisplay);
-
-    if (imageDisplay == 1) {
-      setsrcOfImage(design);
-    } else if (imageDisplay == 2) {
-      setsrcOfImage(multi);
-    } else if (imageDisplay == 3) {
-      setsrcOfImage(performance);
-    } else if (imageDisplay == 4) {
-      setsrcOfImage(battery);
-    } else if (imageDisplay == 5) {
-      setsrcOfImage(camera);
-    } else if (imageDisplay == 0) {
-      setsrcOfImage(flex);
-    }
 
     gsap.fromTo(
       image,
