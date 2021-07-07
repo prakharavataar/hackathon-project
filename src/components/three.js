@@ -1,16 +1,18 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import galaxy from "../assests/galaxy_phone/scene.glb";
+import galaxy from "../assests/galaxy_phone/scene1.glb";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import React, { useEffect } from "react";
 import gsap from "gsap";
 
-function Three({ value, height , width }) {
+function Three({ value, height, width, modelAnimationValue }) {
   let clock;
+  let mixer;
+
   //Three.js load (if needed)
 
-  function threeLoad(height, width) {
-    console.log(height, width)
+  function threeLoad(height, width, play, rotate) {
+    console.log(height, width);
     const scene = new THREE.Scene();
     clock = new THREE.Clock();
     const mainRefHeight = height;
@@ -24,19 +26,27 @@ function Three({ value, height , width }) {
     );
     const loader = new GLTFLoader();
     const canvas = document.querySelector("canvas.webgl");
-    const renderer = new THREE.WebGLRenderer({ canvas , alpha: true});
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
     renderer.setSize(mainRefWidth, mainRefHeight);
-    renderer.setClearColor( 0x000000, 0 );
+    renderer.setClearColor(0x000000, 0);
     console.log(scene);
     const controls = new OrbitControls(camera, canvas);
     controls.update();
     let mesh = null;
+
     loader.load(
       galaxy,
       (gltf) => {
         mesh = gltf.scene;
+        console.log(mesh);
         scene.add(gltf.scene);
-        gltf.scene.scale.set(2.6, 2.6, 2.6);
+        mixer = new THREE.AnimationMixer(mesh);
+        if (play) {
+          gltf.animations.forEach((clip) => {
+            mixer.clipAction(clip).play();
+          });
+        }
+        gltf.scene.scale.set(30, 30, 30);
       },
       (xhr) => {
         console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
@@ -45,8 +55,8 @@ function Three({ value, height , width }) {
         console.log("An error happened");
       }
     );
-    const color = 0xFFFFFF;
-    const intensity = 5;
+    const color = 0xffffff;
+    const intensity = 8;
     const light = new THREE.AmbientLight(color, intensity);
     scene.add(light);
 
@@ -55,8 +65,8 @@ function Three({ value, height , width }) {
     const animate = function () {
       requestAnimationFrame(animate);
       const delta = clock.getDelta();
-
-      if (mesh) {
+      if (mixer && play) mixer.update(delta * 0.3);
+      if (mesh && rotate) {
         mesh.rotation.y += delta * 0.8;
       }
       controls.update();
@@ -70,11 +80,23 @@ function Three({ value, height , width }) {
       gsap.fromTo(
         document.getElementsByClassName("webgl")[0],
         { autoAlpha: 0, scale: 0 },
-        { autoAlpha: 1, scale: "1", duration: 1, ease: "power1.out" }
+        { autoAlpha: 1, scale: 1, duration: 1, ease: "power1.out" }
       );
-      threeLoad(height, width);
+      let flex = 0;
+      let rotate = 0;
+      if (modelAnimationValue === 0) {
+        rotate = 1;
+        flex = 0;
+      } else if (modelAnimationValue === 1) {
+        rotate = 0;
+        flex = 1;
+      } else {
+        rotate = 0;
+        flex = 0;
+      }
+      threeLoad(height, width, flex, rotate);
     }
-  }, [value]);
+  }, [value, modelAnimationValue]);
 
   return <canvas className="webgl"></canvas>;
 }

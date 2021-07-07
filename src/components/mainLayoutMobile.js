@@ -13,6 +13,7 @@ function MainLayoutMobile({zvalue}) {
   const [buttonActive, setButtonActive] = useState(-1);
   const [srcOfImage, setsrcOfImage] = useState(flex);
   const [value, setValue] = useState(0)
+  const [modelAnimationValue, setmodelAnimationValue] = useState(0)
 
   function setButton(value) {
     setButtonActive(value);
@@ -67,12 +68,40 @@ function MainLayoutMobile({zvalue}) {
     <div className="mainMobileContainer">
       <div className="mobileSection1">
         <div ref={ref1} className="mobileSection1Child">
-          <Three value={value} height="400" width="400"></Three>
+          <Three value={value} height="500" width="400" modelAnimationValue={modelAnimationValue}></Three>
         </div>
         <div className="mobileSection1Child">
         <img src={srcOfImage} className="imageMobile" ref={ref2}></img>
         </div>
-       
+      </div>
+      <div className="bottomThreeButtonsContainer" style={{display:buttonActive== -1? 'flex' : 'none'}}>
+              <button
+                onClick={() => setmodelAnimationValue(0)}
+                className={
+                  "bottomThreeButtonsChild " +
+                  (modelAnimationValue === 0 ? "active" : "")
+                }
+              >
+                Rotation
+              </button>
+              <button
+                onClick={() => setmodelAnimationValue(1)}
+                className={
+                  "bottomThreeButtonsChild " +
+                  (modelAnimationValue === 1 ? "active" : "")
+                }
+              >
+                Flex Mode
+              </button>
+              <button
+                onClick={() => setmodelAnimationValue(2)}
+                className={
+                  "bottomThreeButtonsChild " +
+                  (modelAnimationValue === 2 ? "active" : "")
+                }
+              >
+                Free Viewing
+              </button>
       </div>
       <div className="mobileSection2">
         <Button

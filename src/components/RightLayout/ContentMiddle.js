@@ -7,7 +7,7 @@ function ContentMiddle({ transition, buttonActive }) {
         <div
           onClick={() => transition(0)}
           className={
-            "specs " + (buttonActive === 0 ? "specsButtonActive" : null)
+            "specs " + (buttonActive === 0 ? "specsButtonActive" :"")
           }
         >
           <div className="specsLeft">What you'll love</div>
@@ -18,7 +18,7 @@ function ContentMiddle({ transition, buttonActive }) {
         <div
           onClick={() => transition(1)}
           className={
-            "specs " + (buttonActive === 1 ? "specsButtonActive" : null)
+            "specs " + (buttonActive === 1 ? "specsButtonActive" : "")
           }
         >
           <div className="specsLeft">Technical Specification</div>
@@ -29,7 +29,7 @@ function ContentMiddle({ transition, buttonActive }) {
         <div
           onClick={() => transition(2)}
           className={
-            "specs " + (buttonActive === 2 ? "specsButtonActive" : null)
+            "specs " + (buttonActive === 2 ? "specsButtonActive" :"")
           }
         >
           <div className="specsLeft">Reviews</div>
@@ -40,7 +40,7 @@ function ContentMiddle({ transition, buttonActive }) {
         <div
           onClick={() => transition(3)}
           className={
-            "specs " + (buttonActive === 3 ? "specsButtonActive" : null)
+            "specs " + (buttonActive === 3 ? "specsButtonActive" : "")
           }
         >
           <div className="specsLeft">More about this device</div>

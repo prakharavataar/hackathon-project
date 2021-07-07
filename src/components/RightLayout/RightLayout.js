@@ -18,7 +18,7 @@ import performance from "../../assests/performance.jpeg";
 import design from "../../assests/design.jpeg";
 import battery from "../../assests/battery.jpeg";
 import Three from "../three";
-
+import vr from "../../assests/vr1.png";
 
 function RightLayout({ rightLayoutChild, imageDisplay }) {
   //main Refs
@@ -35,8 +35,9 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
   const [srcOfImage, setsrcOfImage] = useState(samsung);
   const [width, setWidth] = useState(300);
   const [buttonActive, setButtonActive] = useState(0);
-  const [value, setValue] = useState(0)
-  const [height, setHeight] = useState(600)
+  const [value, setValue] = useState(0);
+  const [height, setHeight] = useState(600);
+  const [modelAnimationValue, setmodelAnimationValue] = useState(0);
 
   function transition(value) {
     setButtonActive(value);
@@ -53,7 +54,6 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
       { autoAlpha: 1, scale: ".75", duration: 1, ease: "power1.out" }
     );
   }
-
 
   //set display of rightmost layout
   function sectionDisplay() {
@@ -78,14 +78,13 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
 
   //Button actions from left will change this sections images/models/gifs
   useEffect(() => {
-
     if (imageDisplay == -1) {
-      ref1.current.style.display = "none"
+      ref1.current.style.display = "none";
       ref2.current.style.display = "block";
-      setValue(1)
+      setValue(1);
     } else {
-      ref1.current.style.display="block"
-      ref2.current.style.display= "none";
+      ref1.current.style.display = "block";
+      ref2.current.style.display = "none";
     }
 
     const mainHeight = rightLayoutChild.current.children[0].offsetHeight;
@@ -95,7 +94,7 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
     const mainWidth = rightLayoutChild.current.children[0].offsetWidth;
 
     setWidth(mainWidth);
-    setHeight(mainHeight)
+    setHeight(mainHeight);
 
     console.log(heightOfSamsung + "----" + mainWidth);
     const image = document.getElementsByClassName("samsung")[0];
@@ -114,7 +113,7 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
       setsrcOfImage(battery);
     } else if (imageDisplay == 5) {
       setsrcOfImage(camera);
-    } else if (imageDisplay == 0){
+    } else if (imageDisplay == 0) {
       setsrcOfImage(flex);
     }
 
@@ -123,8 +122,6 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
       { autoAlpha: 0, scale: 0 },
       { autoAlpha: 1, scale: ".9", duration: 1, ease: "power1.out" }
     );
-
-  
   }, [imageDisplay]);
 
   return (
@@ -143,7 +140,49 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
             ></ImageShowcase>
           </div>
           <div style={{ display: "none" }} ref={ref2}>
-            <Three value={value} height ={height -200} width={width-200}></Three>
+            <div
+              className="vrBox"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Tooltip on top"
+            >
+              <img src={vr} className="vr"></img>
+            </div>
+            <Three
+              value={value}
+              height={height - 200}
+              width={width - 200}
+              modelAnimationValue={modelAnimationValue}
+            ></Three>
+            <div className="bottomThreeButtonsContainer">
+              <button
+                onClick={() => setmodelAnimationValue(0)}
+                className={
+                  "bottomThreeButtonsChild " +
+                  (modelAnimationValue === 0 ? "active" : "")
+                }
+              >
+                Rotation
+              </button>
+              <button
+                onClick={() => setmodelAnimationValue(1)}
+                className={
+                  "bottomThreeButtonsChild " +
+                  (modelAnimationValue === 1 ? "active" : "")
+                }
+              >
+                Flex Mode
+              </button>
+              <button
+                onClick={() => setmodelAnimationValue(2)}
+                className={
+                  "bottomThreeButtonsChild " +
+                  (modelAnimationValue === 2 ? "active" : "")
+                }
+              >
+                Free Viewing
+              </button>
+            </div>
           </div>
         </div>
 

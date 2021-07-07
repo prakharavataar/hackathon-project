@@ -27,7 +27,7 @@ function Section1({ section1, buttonActive }) {
         <img src={samsung1} alt='samsung1'></img>
         <img src={samsung2} alt='samsung1'></img>
         <img src={samsung3} alt='samsung1'></img>
-        <p>Click here to show all the specifications</p>
+        <a href="https://www.samsung.com/global/galaxy/galaxy-z-fold2/specs/" target="_blank">Click here to show all the specifications</a>
       </div>
 
     </div>
