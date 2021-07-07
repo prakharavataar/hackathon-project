@@ -18,7 +18,9 @@ import performance from "../../assests/performance.jpeg";
 import design from "../../assests/design.jpeg";
 import battery from "../../assests/battery.jpeg";
 import Three from "../three";
-import vr from "../../assests/vr1.png";
+import vr from "../../assests/ar.png";
+import Popup from "./popup.js";
+import qr from "../../assests/qr.jpeg"
 
 function RightLayout({ rightLayoutChild, imageDisplay }) {
   //main Refs
@@ -30,6 +32,7 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
   const ratingRef = useRef(null);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
+  const popup = useRef(null)
 
   //main states
   const [srcOfImage, setsrcOfImage] = useState(samsung);
@@ -38,6 +41,21 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
   const [value, setValue] = useState(0);
   const [height, setHeight] = useState(600);
   const [modelAnimationValue, setmodelAnimationValue] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
+
+  const togglePopup = () => {
+    const t1 = gsap.timeline();
+    if(isOpen)
+    t1.fromTo(popup.current, {autoAlpha:1},{autoAlpha:0,duration:.5,ease:"power1.in"}).call(open)
+    else
+    open()
+ 
+  };
+
+  function open(){
+    setIsOpen(!isOpen);
+  }
 
   function transition(value) {
     setButtonActive(value);
@@ -144,7 +162,8 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
               className="vrBox"
               data-toggle="tooltip"
               data-placement="top"
-              title="Tooltip on top"
+              title="AR - Mode"
+              onClick={togglePopup}
             >
               <img src={vr} className="vr"></img>
             </div>
@@ -185,6 +204,17 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
             </div>
           </div>
         </div>
+        {isOpen && (
+          <Popup
+            popup = {popup}
+            content={
+              <>
+               <img src={qr} className="qr"></img>
+              </>
+            }
+            handleClose={togglePopup}
+          />
+        )}
 
         <div className="rightLayoutChild1">
           {/* Second Section that remains constant throughout the view   */}

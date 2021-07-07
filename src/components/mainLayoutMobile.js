@@ -26,12 +26,14 @@ function MainLayoutMobile({zvalue}) {
     console.log('z value ---', zvalue)
 
     if(zvalue){
+      document.getElementsByClassName("bottomThreeButtonsContainer")[0].style.visibility="hidden"
       document.getElementsByClassName("mobileSection2")[0].style.zIndex = -1
       document.getElementsByClassName("mobileSection1")[0].style.visibility = "hidden"
     }
     else{
      document.getElementsByClassName("mobileSection2")[0].style.zIndex = 1
      document.getElementsByClassName("mobileSection1")[0].style.visibility = "visible"
+     document.getElementsByClassName("bottomThreeButtonsContainer")[0].style.visibility="visible"
     }
     const image = document.getElementsByClassName("imageMobile")[0];
     if (buttonActive == -1) {
