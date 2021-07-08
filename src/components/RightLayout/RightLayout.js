@@ -170,7 +170,7 @@ function RightLayout({ rightLayoutChild, imageDisplay }) {
             <Three
               value={value}
               height={height - 200}
-              width={width - 200}
+              width={width - 100}
               modelAnimationValue={modelAnimationValue}
             ></Three>
             <div className="bottomThreeButtonsContainer">
