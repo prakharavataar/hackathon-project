@@ -14,6 +14,7 @@ function Three({ value, height, width, modelAnimationValue }) {
   function threeLoad(height, width, play, rotate) {
     console.log(height, width);
     const scene = new THREE.Scene();
+
     clock = new THREE.Clock();
     const mainRefHeight = height;
     const mainRefWidth = width;
@@ -57,8 +58,16 @@ function Three({ value, height, width, modelAnimationValue }) {
     );
     const color = 0xffffff;
     const intensity = 8;
-    const light = new THREE.AmbientLight(color, intensity);
-    scene.add(light);
+    const lightAmbient = new THREE.AmbientLight(color, intensity);
+    scene.add(lightAmbient);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(1, 0.5, 1);
+    scene.add(directionalLight);
+
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight2.position.set(-1, -0.5, -1);
+    scene.add(directionalLight2);
 
     renderer.render(scene, camera);
     camera.position.z = 5;
